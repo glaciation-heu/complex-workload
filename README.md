@@ -108,7 +108,7 @@ pipx install poetry
 3. Install dependencies:
 ```bash
 poetry config virtualenvs.in-project true
-poetry install --no-root
+poetry install --no-root --with dev
 ```
 
 4. Install `pre-commit` hooks:

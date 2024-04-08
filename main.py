@@ -19,16 +19,18 @@ def run_complex_workload(
     spark = SparkSession.builder.appName("Multiplication Program").getOrCreate()
 
     spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.access.key", minio_access_key)
+        "fs.s3a.access.key", minio_access_key
+    )
     spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.secret.key", minio_secret_key)
-    spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.endpoint", minio_host)
+        "fs.s3a.secret.key", minio_secret_key
+    )
+    spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", minio_host)
     spark.sparkContext._jsc.hadoopConfiguration().set(
         "fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem"
     )
     spark.sparkContext._jsc.hadoopConfiguration().set(
-        "fs.s3a.path.style.access", "true")
+        "fs.s3a.path.style.access", "true"
+    )
     spark.sparkContext._jsc.hadoopConfiguration().set(
         "fs.s3a.connection.ssl.enabled", "false"
     )
@@ -59,11 +61,13 @@ def run_complex_workload(
         df = spark.read.csv(f"s3a://{source_bucket}/{dataset_name}")
 
         # Calculate the sum of all numbers in each column
-        sums = df.select(*[
-            sum(col(col_name)).alias(col_name)
-            for col_name in df.columns
-            if df.schema[col_name].dataType != 'string'
-        ])
+        sums = df.select(
+            *[
+                sum(col(col_name)).alias(col_name)
+                for col_name in df.columns
+                if df.schema[col_name].dataType != "string"
+            ]
+        )
 
         # Write the result to the target bucket
         sums.write.csv(
