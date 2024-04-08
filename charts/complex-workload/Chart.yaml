@@ -1,0 +1,6 @@
+apiVersion: v2
+name: complex-workload
+description: Complex workload for testing
+type: application
+version: "0.0.0"
+appVersion: "0.0.0"

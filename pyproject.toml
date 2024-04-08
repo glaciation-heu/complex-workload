@@ -1,0 +1,18 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "complex-workload"
+version = "0.0.0"
+description = "Complex workload for testing"
+readme = "README.md"
+authors = ["HIRO-MicroDataCenters <all-hiro@hiro-microdatacenters.nl>"]
+license = "MIT"
+repository = "https://github.com/glaciation-heu/complex-workload"
+homepage = "https://github.com/glaciation-heu/complex-workload"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyspark = "^3.5.1"
+minio = "^7.2.5"

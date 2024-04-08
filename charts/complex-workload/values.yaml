@@ -1,0 +1,24 @@
+image:
+  repository: ""
+  tag: ""
+  pullPolicy: IfNotPresent
+
+spark:
+  driver:
+    cores: 1
+    coreLimit: "1200m"
+    memory: "512m"
+    serviceAccount: "spark"
+  executor:
+    cores: 1
+    instances: 3
+    memory: "512m"
+
+arguments:
+  time: 3600
+  minioHost: localhost:9000
+  minioAccessKey:
+  minioSecretKey:
+  sourceBucket: "source"
+  targetBucket: "target"
+  datasetName: "example.csv"
